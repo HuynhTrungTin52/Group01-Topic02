@@ -15,8 +15,27 @@ The React Compiler is not enabled on this template because of its impact on dev 
 
 If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
 
+---
+
 Note from Tin : Run 
+
 npm i
+
 -> To download the dependencies necessary for this project(especially the vite-pwa plugin)
+
 npm run dev
+
 -> To run the project
+
+---
+Note from Nghia:
+
+Còn muốn test đt
+
+Thì npm run dev -- --host
+
+Dòng đầu tiên là máy tính
+
+Điện thoại thì dòng cuối cùng
+
+Còn nếu thử offline ko được thì npm run build rồi chạy npm run preview
