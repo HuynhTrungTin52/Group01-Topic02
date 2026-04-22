@@ -55,23 +55,25 @@ export const fetchWeather = async () => {
   url.searchParams.set("timezone", CITY.timezone);
   url.searchParams.set("temperature_unit", "celsius");
 
-  const res = await fetch(url.toString());
+  const res = await fetch(url.toString(), { cache: 'no-store' });
   if (!res.ok) throw new Error(`Weather fetch failed: ${res.status}`);
   const data = await res.json();
   const cur = data.current || {};
 
-  // Open-Meteo returns local time as "YYYY-MM-DDTHH:MM" (no timezone suffix).
-  // Parse HH:MM directly so we display the city's local time.
-  let time = "--:--";
-  if (typeof cur.time === "string") {
-    const m = cur.time.match(/T(\d{2}):(\d{2})/);
-    if (m) time = `${m[1]}:${m[2]}`;
-  }
+  const now = new Date();
+  const formatter = new Intl.DateTimeFormat('en-US', {
+    timeZone: CITY.timezone,
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: false 
+  });
+  
+  const liveTime = formatter.format(now);
 
   const code = cur.weather_code;
   return {
     city: CITY.name,
-    time,
+    time: liveTime, 
     tempC: typeof cur.temperature_2m === "number" ? cur.temperature_2m : null,
     code,
     description: describeCode(code),
