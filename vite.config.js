@@ -15,7 +15,7 @@ export default defineConfig({
     VitePWA({
       registerType: 'autoUpdate',
       devOptions: {
-        enabled: true 
+        enabled: true
       },
       manifest: {
         name: 'TDTU PWA Advanced Dashboard',
@@ -32,6 +32,19 @@ export default defineConfig({
           {
             src: '/pwa-512x512.png',
             sizes: '512x512',
+            type: 'image/png'
+          }
+        ],
+        screenshots: [
+          {
+            src: '/screenshot-desktop.png',
+            sizes: '1920x1080',
+            type: 'image/png',
+            form_factor: 'wide'
+          },
+          {
+            src: '/screenshot-mobile.png',
+            sizes: '1080x1920',
             type: 'image/png'
           }
         ]
