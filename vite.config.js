@@ -25,12 +25,12 @@ export default defineConfig({
         background_color: '#f0f4f8',
         icons: [
           {
-            src: 'pwa-192x192.png',
-            sizes: '192x192',
+            src: '/pwa-128x128.png',
+            sizes: '128x128',
             type: 'image/png'
           },
           {
-            src: 'pwa-512x512.png',
+            src: '/pwa-512x512.png',
             sizes: '512x512',
             type: 'image/png'
           }
