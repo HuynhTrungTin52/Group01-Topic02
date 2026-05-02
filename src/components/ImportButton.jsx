@@ -2,18 +2,14 @@ import { useRef, useState } from "react";
 import { Upload, Check } from "lucide-react";
 import { STORAGE_KEYS } from "../lib/constants";
 
-/**
- * Imports a JSON file exported by ExportButton back into localStorage.
- * Validates shape minimally, writes keys, then reloads the page so state
- * is re-read cleanly. Pairs with ExportButton for a round-trip.
- */
+
 export const ImportButton = () => {
   const fileRef = useRef(null);
   const [done, setDone] = useState(false);
 
   const handleChange = async (e) => {
     const file = e.target.files && e.target.files[0];
-    // Reset so selecting the same file again re-fires change.
+    
     e.target.value = "";
     if (!file) return;
     try {
@@ -41,7 +37,7 @@ export const ImportButton = () => {
         localStorage.setItem(STORAGE_KEYS.THEME, data.theme);
       }
       setDone(true);
-      // Reload so every component picks up the imported state.
+      
       setTimeout(() => window.location.reload(), 350);
     } catch (err) {
       alert("Import failed: " + (err.message || "Unable to parse file"));

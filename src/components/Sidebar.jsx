@@ -51,7 +51,7 @@ export const Sidebar = ({ activeFilter = null, onFilter }) => {
       className="hidden lg:flex shrink-0 h-full gap-3"
       data-testid="sidebar"
     >
-      {/* Thin icon rail */}
+      
       <div className="w-14 glass rounded-3xl flex flex-col items-center justify-between py-5">
         <div className="flex flex-col gap-4">
           <button
@@ -88,7 +88,7 @@ export const Sidebar = ({ activeFilter = null, onFilter }) => {
         </div>
       </div>
 
-      {/* Main nav panel */}
+      
       <nav
         className="w-64 glass rounded-3xl p-5 overflow-y-auto thin-scroll"
         data-testid="sidebar-nav"

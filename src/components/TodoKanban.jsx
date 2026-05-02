@@ -50,13 +50,13 @@ export const TodoKanban = ({ filter = null, onClearFilter }) => {
   const [newTags, setNewTags] = useState([]);
   const [editingId, setEditingId] = useState(null);
   const [editingText, setEditingText] = useState("");
-  const draggingRef = useRef(null); // { fromKey, id } — synchronous
-  const [draggingId, setDraggingId] = useState(null); // visual dim only
+  const draggingRef = useRef(null); 
+  const [draggingId, setDraggingId] = useState(null); 
   const [dragOver, setDragOver] = useState(null);
-  const [dragOverTaskId, setDragOverTaskId] = useState(null); // within-column reorder target
+  const [dragOverTaskId, setDragOverTaskId] = useState(null); 
   const editInputRef = useRef(null);
 
-  // Persist on every change — PWA offline requirement
+  
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
   }, [tasks]);
@@ -85,9 +85,9 @@ export const TodoKanban = ({ filter = null, onClearFilter }) => {
     setNewTags([]);
   };
 
-  // Move (and optionally reorder). If `targetId` is passed, insert BEFORE that
-  // task in the destination column. Supports both cross-column moves and
-  // within-column reordering.
+  
+  
+  
   const moveTaskTo = (fromKey, id, toKey, targetId = null) => {
     if (fromKey === toKey && targetId === id) return;
     setTasks((prev) => {
@@ -138,16 +138,16 @@ export const TodoKanban = ({ filter = null, onClearFilter }) => {
       prev.includes(tagId) ? prev.filter((x) => x !== tagId) : [...prev, tagId]
     );
 
-  // --- drag-and-drop (HTML5 native) ---
-  // Using a ref + dataTransfer fallback because React state updates from
-  // onDragStart are not guaranteed to be committed by the time onDrop fires.
+  
+  
+  
   const onDragStart = (fromKey, id) => (e) => {
     draggingRef.current = { fromKey, id };
     setDraggingId(id);
     try {
       e.dataTransfer.effectAllowed = "move";
       e.dataTransfer.setData("text/plain", JSON.stringify({ fromKey, id }));
-    } catch { /* noop */ }
+    } catch {  }
   };
   const onDragEnd = () => {
     draggingRef.current = null;
@@ -156,9 +156,9 @@ export const TodoKanban = ({ filter = null, onClearFilter }) => {
     setDragOverTaskId(null);
   };
   const onColDragOver = (key) => (e) => {
-    // Always allow drop when a drag is in progress (ref OR dataTransfer set).
+    
     e.preventDefault();
-    try { e.dataTransfer.dropEffect = "move"; } catch { /* noop */ }
+    try { e.dataTransfer.dropEffect = "move"; } catch {  }
     if (dragOver !== key) setDragOver(key);
   };
   const onColDrop = (key) => (e) => {
@@ -168,21 +168,21 @@ export const TodoKanban = ({ filter = null, onClearFilter }) => {
       try {
         const raw = e.dataTransfer.getData("text/plain");
         if (raw) payload = JSON.parse(raw);
-      } catch { /* noop */ }
+      } catch {  }
     }
     if (payload && payload.fromKey && payload.id) {
-      // Dropped on column (not on a task) — append to end.
+      
       moveTaskTo(payload.fromKey, payload.id, key);
     }
     onDragEnd();
   };
 
-  // Task-level drag handlers — enables within-column reorder + "insert before"
-  // when dropping on top of another task.
+  
+  
   const onTaskDragOver = (key, taskId) => (e) => {
     e.preventDefault();
     e.stopPropagation();
-    try { e.dataTransfer.dropEffect = "move"; } catch { /* noop */ }
+    try { e.dataTransfer.dropEffect = "move"; } catch {  }
     if (dragOver !== key) setDragOver(key);
     if (dragOverTaskId !== taskId) setDragOverTaskId(taskId);
   };
@@ -194,7 +194,7 @@ export const TodoKanban = ({ filter = null, onClearFilter }) => {
       try {
         const raw = e.dataTransfer.getData("text/plain");
         if (raw) payload = JSON.parse(raw);
-      } catch { /* noop */ }
+      } catch {  }
     }
     if (payload && payload.id && payload.id !== taskId) {
       moveTaskTo(payload.fromKey, payload.id, key, taskId);
@@ -216,7 +216,7 @@ export const TodoKanban = ({ filter = null, onClearFilter }) => {
 
   return (
     <section data-testid="todo-kanban">
-      {/* Header row */}
+      
       <div className="flex items-end justify-between mb-4 gap-3 flex-wrap">
         <div className="flex items-center gap-3 flex-wrap">
           <h2 className="text-xl font-semibold text-foreground/90">To Do List</h2>
@@ -291,7 +291,7 @@ export const TodoKanban = ({ filter = null, onClearFilter }) => {
         </form>
       </div>
 
-      {/* Columns */}
+      
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {ORDER.map((key, colIdx) => {
           const visible = tasks[key].filter(matches);

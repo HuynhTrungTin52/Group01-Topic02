@@ -1,4 +1,3 @@
-/* Simple offline-first service worker */
 const CACHE = "today-dashboard-v3";
 const CORE = ["/", "/index.html", "/manifest.json", "/icon.svg"];
 
@@ -20,16 +19,12 @@ self.addEventListener("fetch", (e) => {
   const req = e.request;
   if (req.method !== "GET") return;
 
-  // Network-ONLY for the live weather API so we always try fresh data and
-  // never serve a stale cached response. If offline, the fetch rejects and
-  // the component shows the error/retry UI.
   const url = new URL(req.url);
   if (url.hostname === "api.open-meteo.com") {
     e.respondWith(fetch(req));
     return;
   }
 
-  // Cache-first for the app shell.
   e.respondWith(
     caches.match(req).then(
       (cached) =>

@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { Download } from "lucide-react";
 
-// beforeinstallprompt UI — shows an "Install" button when the browser
-// signals the PWA is installable. Hides after install or when not eligible.
+
+
 export const InstallButton = () => {
   const [deferred, setDeferred] = useState(null);
   const [installed, setInstalled] = useState(false);
@@ -35,7 +35,7 @@ export const InstallButton = () => {
       const choice = await deferred.userChoice;
       if (choice && choice.outcome === "accepted") setInstalled(true);
     } catch {
-      /* noop */
+      
     } finally {
       setDeferred(null);
     }

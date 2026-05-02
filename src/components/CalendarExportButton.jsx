@@ -2,10 +2,7 @@ import { CalendarDays } from "lucide-react";
 import { STORAGE_KEYS } from "../lib/constants";
 import { buildICS, downloadICS } from "../lib/ics";
 
-/**
- * Downloads all user activities (from localStorage) as a .ics file that can
- * be imported into Google Calendar, Apple Calendar, Outlook, etc.
- */
+
 export const CalendarExportButton = () => {
   const handleClick = () => {
     let acts = [];

@@ -37,13 +37,13 @@ const loadCurrentId = () => {
 };
 
 function App() {
-  const [filter, setFilter] = useState(null); // { type: "list"|"tag", value } | null
+  const [filter, setFilter] = useState(null); 
   const [modalOpen, setModalOpen] = useState(false);
-  const [editingActivity, setEditingActivity] = useState(null); // activity object or null
+  const [editingActivity, setEditingActivity] = useState(null); 
   const [userActivities, setUserActivities] = useState(loadActivities);
   const [currentId, setCurrentId] = useState(loadCurrentId);
 
-  // Persist user activities + current selection — PWA offline requirement
+  
   useEffect(() => {
     localStorage.setItem(ACTIVITIES_KEY, JSON.stringify(userActivities));
   }, [userActivities]);
@@ -72,7 +72,7 @@ function App() {
     return def;
   }, [currentId, userActivities]);
 
-  // Formatters
+  
   const formatDt = (dt) => {
     if (!dt || !dt.includes("T")) return dt || "";
     const [d, t] = dt.split("T");
@@ -94,7 +94,7 @@ function App() {
                 JSON.stringify([...set])
               );
             } catch {
-              /* noop */
+              
             }
           }
           return {
@@ -108,7 +108,7 @@ function App() {
       );
       setCurrentId(id);
     } else {
-      // Add new
+      
       const newId = `a-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`;
       const act = {
         id: newId,
@@ -157,7 +157,7 @@ function App() {
         }
       }
     } catch {
-      /* noop */
+      
     }
   };
 
@@ -218,7 +218,7 @@ function App() {
               tag: a.id,
             });
           } catch {
-            /* noop */
+            
           }
           notified.add(key);
           saveNotified(notified);
@@ -242,14 +242,14 @@ function App() {
       <div className="max-w-[1500px] mx-auto p-4 lg:p-6 h-screen flex gap-4 lg:gap-5">
         <Sidebar activeFilter={filter} onFilter={setFilter} />
 
-        {/* Main column */}
+        
         <main
           className="flex-1 min-w-0 flex gap-4 lg:gap-5"
           data-testid="main-dashboard"
         >
-          {/* Center */}
+          
           <section className="flex-1 min-w-0 glass-strong rounded-[28px] p-5 lg:p-7 overflow-y-auto thin-scroll">
-            {/* Search */}
+            
             <div className="glass rounded-full px-4 py-2.5 flex items-center gap-2 mb-6">
               <Search className="h-4 w-4 text-foreground/60" />
               <input
@@ -260,7 +260,7 @@ function App() {
               />
             </div>
 
-            {/* Title + action */}
+            
             <div className="flex items-start justify-between gap-4 mb-6 flex-wrap">
               <div>
                 <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold text-foreground leading-[0.95]">
@@ -288,10 +288,10 @@ function App() {
             </div>
           </section>
 
-          {/* Right */}
+          
           <div className="hidden xl:flex">
             <div className="w-[280px] flex flex-col">
-              {/* Top-right bar */}
+              
               <div className="flex items-center justify-end gap-2 mb-4">
                 <ImportButton />
                 <ExportButton />
@@ -318,7 +318,7 @@ function App() {
           </div>
         </main>
 
-        {/* Mobile/tablet fallback: action chips */}
+        
         <div className="xl:hidden fixed bottom-3 right-3 z-20 flex items-center gap-2">
           <ImportButton />
           <ExportButton />

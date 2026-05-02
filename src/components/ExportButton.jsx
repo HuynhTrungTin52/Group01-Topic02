@@ -1,10 +1,7 @@
 import { FileJson } from "lucide-react";
 import { STORAGE_KEYS } from "../lib/constants";
 
-/**
- * Exports all user data (kanban tasks + activities + current selection + theme)
- * as a downloadable JSON file.
- */
+
 export const ExportButton = () => {
   const handleExport = () => {
     const data = {

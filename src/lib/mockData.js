@@ -15,13 +15,13 @@ export const reminders = [
   { id: "r3", title: "Submit Midterm Report", due: "Fri · 23:59" },
 ];
 
-// export const weather = {
-//   time: "14:45",
-//   temp: "30°C",
-//   condition: "Sunny",
-//   city: "Ho Chi Minh - City",
-//   forecast: "Clear skies through the evening",
-// };
+
+
+
+
+
+
+
 
 export const currentActivity = {
   id: "default",

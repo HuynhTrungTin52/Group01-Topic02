@@ -1,5 +1,5 @@
-// Open-Meteo weather service — keyless public API.
-// Docs: https://open-meteo.com/en/docs
+
+
 
 export const WEATHER_CODES = {
   0: "Clear sky",
@@ -35,7 +35,7 @@ export const WEATHER_CODES = {
 export const describeCode = (c) =>
   (c != null && WEATHER_CODES[c]) || "Unknown";
 
-// Ho Chi Minh City coordinates
+
 const CITY = {
   name: "Ho Chi Minh - City",
   latitude: 10.82,
@@ -43,10 +43,7 @@ const CITY = {
   timezone: "Asia/Ho_Chi_Minh",
 };
 
-/**
- * Fetches current weather for Ho Chi Minh City from Open-Meteo.
- * Returns { city, time (HH:MM local), tempC, code, description }.
- */
+
 export const fetchWeather = async () => {
   const url = new URL("https://api.open-meteo.com/v1/forecast");
   url.searchParams.set("latitude", CITY.latitude);

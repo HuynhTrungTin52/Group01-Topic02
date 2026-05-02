@@ -1,12 +1,7 @@
 import { useEffect, useState } from "react";
 import { X, Calendar, MapPin, Type, Plus, Save } from "lucide-react";
 
-/**
- * New / Edit Activity modal — glassmorphic overlay form.
- * Controlled from App.js. Calls onSave({ title, location, time, id? }) on submit.
- * `time` is a datetime-local string (e.g. "2026-02-12T14:30").
- * When `editing` is provided, the modal is in edit mode (prefilled, Save label).
- */
+
 export const NewActivityModal = ({ open, onClose, onSave, editing = null }) => {
   const [title, setTitle] = useState("");
   const [location, setLocation] = useState("");
@@ -14,7 +9,7 @@ export const NewActivityModal = ({ open, onClose, onSave, editing = null }) => {
 
   const isEdit = !!editing;
 
-  // Seed fields every time the modal opens (or the editing target changes).
+  
   useEffect(() => {
     if (!open) return;
     if (editing) {

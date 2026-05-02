@@ -5,16 +5,7 @@ import {
 import { schedule as scheduleData } from "../lib/mockData";
 import { fetchWeather } from "../lib/weatherService";
 
-/**
- * Right panel — Current Activity, Weather (live Open-Meteo), Schedule, Mark as Done.
- *
- * Props:
- *  - currentActivity: { id, title, location?, time?, tag?, source }
- *  - onRevertActivity(): revert to default activity
- *  - onDeleteActivity(): remove a user-added activity (only for source === "user")
- *  - onEditActivity(): open the edit modal for the current user activity
- *  - onPickSchedule(scheduleItem): set schedule item as current activity
- */
+
 export const RightPanel = ({
   currentActivity,
   onRevertActivity,
@@ -55,7 +46,7 @@ export const RightPanel = ({
       className="flex flex-col gap-4 w-full lg:w-[280px] shrink-0"
       data-testid="right-panel"
     >
-      {/* Current Activity */}
+      
       <div
         className="glass-strong rounded-3xl p-5 fade-up"
         data-testid="current-activity-widget"
@@ -129,7 +120,7 @@ export const RightPanel = ({
         </dl>
       </div>
 
-      {/* Weather (live) */}
+      
       <div
         className="glass-strong rounded-3xl p-5 fade-up"
         data-testid="weather-widget"
@@ -193,7 +184,7 @@ export const RightPanel = ({
         )}
       </div>
 
-      {/* Schedule (clickable) */}
+      
       <div
         className="glass-strong rounded-3xl p-5 fade-up flex-1"
         data-testid="schedule-widget"

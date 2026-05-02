@@ -1,13 +1,7 @@
 import { useState } from "react";
 import { Bell, BellRing, BellOff } from "lucide-react";
 
-/**
- * Shows a bell icon. Clicking it requests Notification permission.
- *   - Unsupported → hidden entirely
- *   - 'default'   → Bell (click to request)
- *   - 'granted'   → BellRing (filled, amber)
- *   - 'denied'    → BellOff (disabled, tooltip explains to enable in browser)
- */
+
 export const NotificationsButton = () => {
   const initialPerm =
     typeof Notification === "undefined" ? "unsupported" : Notification.permission;
@@ -28,11 +22,11 @@ export const NotificationsButton = () => {
             tag: "setup",
           });
         } catch {
-          /* noop */
+          
         }
       }
     } catch {
-      /* noop */
+      
     }
   };
 

@@ -1,4 +1,4 @@
-// Central constants — avoid tag/storage-key drift across the app.
+
 
 export const ACTIVITY_TAGS = {
   IN_PROGRESS: "In Progress",
