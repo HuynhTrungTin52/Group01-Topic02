@@ -76,7 +76,7 @@ export const Sidebar = ({ activeFilter = null, onFilter }) => {
             data-testid="rail-settings"
             className="h-10 w-10 rounded-2xl grid place-items-center text-foreground/80 hover:bg-white/40 dark:hover:bg-white/10 transition"
           >
-            <Settings className="h-5 w-5" />
+            <img src="/lopty.png" alt="Lopty" className="h-5 w-5 rounded-full object-cover" />
           </button>
           <button
             aria-label="Log out"
